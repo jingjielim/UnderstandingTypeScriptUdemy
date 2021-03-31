@@ -43,6 +43,22 @@ let favouriteActivites: string[];
 favouriteActivites = ["sports"];
 
 // Tuple Type
-let role: [number, string] = ["sports", "cooking"]; // first element must be a number
-role = [0, "admin", "user"]; // cannot add a third element
-role[1] = 9; // cannot assign number to string element
+
+// let role: [number, string] = ["sports", "cooking"];
+// first element must be a number
+// role = [0, "admin", "user"];
+// cannot add a third element
+// role[1] = 9;
+// cannot assign number to string element
+
+// Enum Type
+
+enum Role {
+  ADMIN,
+  USER,
+  AUTHOR,
+}
+
+const person1 = {
+  role: Role.USER,
+};
