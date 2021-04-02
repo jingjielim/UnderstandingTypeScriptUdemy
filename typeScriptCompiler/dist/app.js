@@ -1,7 +1,8 @@
 "use strict";
 var button = document.querySelector("button");
 function clickHandler(message) {
+    var userName = "max";
     console.log("Clicked! " + message);
 }
-button === null || button === void 0 ? void 0 : button.addEventListener("click", clickHandler.bind(null, "You're welcome!"));
+button.addEventListener("click", clickHandler.bind(null, "Hello!!"));
 //# sourceMappingURL=app.js.map
