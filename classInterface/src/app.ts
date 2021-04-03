@@ -1,11 +1,12 @@
-class Department {
+abstract class Department {
+  static fiscalYear = 2020;
   // private id: string;
   // private name: string;
   private employees: string[] = [];
 
   // short hand initialization. No need to declare the fields and
   // then initialise again in constructor
-  constructor(private readonly id: string, private name: string) {
+  constructor(protected readonly id: string, private name: string) {
     // this.id = id;
     // this.name = name;
   }
@@ -13,9 +14,7 @@ class Department {
   static createEmployee(name: string) {
     return { name: name };
   }
-  describe(this: Department) {
-    console.log(`Department (${this.id}): ${this.name}`);
-  }
+  abstract describe(this: Department): void;
 
   addEmployee(employee: string) {
     this.employees.push(employee);
@@ -30,6 +29,11 @@ class Department {
 class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, "IT");
+  }
+
+  describe(){
+    console.log("IT Department - ID: " + this.id);
+    
   }
 }
 
@@ -50,10 +54,14 @@ class AccountingDepartment extends Department {
   printReports() {
     console.log(this.reports);
   }
+
+  describe() {
+    console.log("Accounting department - ID: " + this.id);
+  }
 }
 
 const employee1 = Department.createEmployee("Max");
-console.log(employee1);
+console.log(employee1, Department.fiscalYear);
 
 let it = new ITDepartment("01", ["Max", "James"]);
 it.addEmployee("jingjie");
@@ -67,8 +75,9 @@ it.describe();
 it.printEmployeeInformation();
 
 let accounting = new AccountingDepartment("02", []);
-accounting.addReports("Something went wrong");
-accounting.printReports();
+// accounting.addReports("Something went wrong");
+// accounting.printReports();
+accounting.describe();
 
 // const accountingCopy = { name: "jingjie", describe: accounting.describe };
 
