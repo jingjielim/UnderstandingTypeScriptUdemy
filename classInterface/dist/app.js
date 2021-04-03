@@ -47,11 +47,21 @@ var ITDepartment = /** @class */ (function (_super) {
 }(Department));
 var AccountingDepartment = /** @class */ (function (_super) {
     __extends(AccountingDepartment, _super);
-    function AccountingDepartment(id, reports) {
+    function AccountingDepartment(id, _reports) {
         var _this = _super.call(this, id, "Accounting") || this;
-        _this.reports = reports;
+        _this._reports = _reports;
         return _this;
     }
+    Object.defineProperty(AccountingDepartment.prototype, "reports", {
+        get: function () {
+            return this._reports;
+        },
+        set: function (value) {
+            this._reports = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     AccountingDepartment.prototype.addReports = function (text) {
         this.reports.push(text);
     };

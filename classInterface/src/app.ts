@@ -31,7 +31,13 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
-  constructor(id: string, private reports: string[]) {
+  public get reports(): string[] {
+    return this._reports;
+  }
+  public set reports(value: string[]) {
+    this._reports = value;
+  }
+  constructor(id: string, private _reports: string[]) {
     super(id, "Accounting");
   }
   addReports(text: string) {
