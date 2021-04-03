@@ -3,9 +3,9 @@ class Department {
   // private name: string;
   private employees: string[] = [];
 
-  // short hand initialization. No need to declare the fields and 
+  // short hand initialization. No need to declare the fields and
   // then initialise again in constructor
-  constructor(private id: string, private name: string) {
+  constructor(private readonly id: string, private name: string) {
     // this.id = id;
     // this.name = name;
   }
@@ -19,21 +19,44 @@ class Department {
   }
 
   printEmployeeInformation() {
-    console.log(this.employees.length);
+    console.log("Number of employess: " + this.employees.length);
     console.log(this.employees);
   }
 }
 
-let accounting = new Department("01",  "accounting");
-accounting.addEmployee("jingjie");
-accounting.addEmployee("Max");
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, "IT");
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting");
+  }
+  addReports(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
+let it = new ITDepartment("01", ["Max", "James"]);
+it.addEmployee("jingjie");
+it.addEmployee("Max");
 // Unable to access employees property of accounting anymore
 // accounting.employees[2] = "Anna";
 
-console.log(accounting);
+console.log(it);
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
+
+let accounting = new AccountingDepartment("02", []);
+accounting.addReports("Something went wrong");
+accounting.printReports();
 
 // const accountingCopy = { name: "jingjie", describe: accounting.describe };
 
