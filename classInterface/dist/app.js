@@ -24,6 +24,9 @@ var Department = /** @class */ (function () {
         // this.id = id;
         // this.name = name;
     }
+    Department.createEmployee = function (name) {
+        return { name: name };
+    };
     Department.prototype.describe = function () {
         console.log("Department (" + this.id + "): " + this.name);
     };
@@ -70,6 +73,8 @@ var AccountingDepartment = /** @class */ (function (_super) {
     };
     return AccountingDepartment;
 }(Department));
+var employee1 = Department.createEmployee("Max");
+console.log(employee1);
 var it = new ITDepartment("01", ["Max", "James"]);
 it.addEmployee("jingjie");
 it.addEmployee("Max");
