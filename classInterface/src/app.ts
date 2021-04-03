@@ -1,13 +1,17 @@
 class Department {
-  private name: string;
+  // private id: string;
+  // private name: string;
   private employees: string[] = [];
 
-  constructor(name: string) {
-    this.name = name;
+  // short hand initialization. No need to declare the fields and 
+  // then initialise again in constructor
+  constructor(private id: string, private name: string) {
+    // this.id = id;
+    // this.name = name;
   }
 
   describe(this: Department) {
-    console.log("Department: " + this.name);
+    console.log(`Department (${this.id}): ${this.name}`);
   }
 
   addEmployee(employee: string) {
@@ -20,7 +24,7 @@ class Department {
   }
 }
 
-let accounting = new Department("accounting");
+let accounting = new Department("01",  "accounting");
 accounting.addEmployee("jingjie");
 accounting.addEmployee("Max");
 // Unable to access employees property of accounting anymore
