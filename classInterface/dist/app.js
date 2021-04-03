@@ -66,6 +66,14 @@ var AccountingDepartment = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.getInstance = function () {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+        else {
+            this.instance = new AccountingDepartment("02", []);
+        }
+    };
     AccountingDepartment.prototype.addReports = function (text) {
         this.reports.push(text);
     };
@@ -87,10 +95,10 @@ it.addEmployee("Max");
 console.log(it);
 it.describe();
 it.printEmployeeInformation();
-var accounting = new AccountingDepartment("02", []);
+var accounting = AccountingDepartment.getInstance();
 // accounting.addReports("Something went wrong");
 // accounting.printReports();
-accounting.describe();
+accounting === null || accounting === void 0 ? void 0 : accounting.describe();
 // const accountingCopy = { name: "jingjie", describe: accounting.describe };
 // accountingCopy.describe();
 //# sourceMappingURL=app.js.map

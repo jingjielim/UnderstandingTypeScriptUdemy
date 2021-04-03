@@ -31,22 +31,34 @@ class ITDepartment extends Department {
     super(id, "IT");
   }
 
-  describe(){
+  describe() {
     console.log("IT Department - ID: " + this.id);
-    
   }
 }
 
 class AccountingDepartment extends Department {
+  private static instance: AccountingDepartment;
+
   public get reports(): string[] {
     return this._reports;
   }
+
   public set reports(value: string[]) {
     this._reports = value;
   }
-  constructor(id: string, private _reports: string[]) {
+
+  private constructor(id: string, private _reports: string[]) {
     super(id, "Accounting");
   }
+
+  static getInstance() {
+    if (AccountingDepartment.instance) {
+      return this.instance;
+    } else {
+      this.instance = new AccountingDepartment("02", []);
+    }
+  }
+
   addReports(text: string) {
     this.reports.push(text);
   }
@@ -74,10 +86,10 @@ console.log(it);
 it.describe();
 it.printEmployeeInformation();
 
-let accounting = new AccountingDepartment("02", []);
+let accounting = AccountingDepartment.getInstance();
 // accounting.addReports("Something went wrong");
 // accounting.printReports();
-accounting.describe();
+accounting?.describe();
 
 // const accountingCopy = { name: "jingjie", describe: accounting.describe };
 
