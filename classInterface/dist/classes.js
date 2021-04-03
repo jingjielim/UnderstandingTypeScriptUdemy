@@ -101,4 +101,4 @@ var accounting = AccountingDepartment.getInstance();
 accounting === null || accounting === void 0 ? void 0 : accounting.describe();
 // const accountingCopy = { name: "jingjie", describe: accounting.describe };
 // accountingCopy.describe();
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=classes.js.map
