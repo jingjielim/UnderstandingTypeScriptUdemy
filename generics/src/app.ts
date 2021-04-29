@@ -54,34 +54,57 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 console.log(extractAndConvert({ name: "James" }, "name"));
 
-
 // Generic Class
-class DataStorage<T extends number | string>{
+class DataStorage<T extends number | string> {
   private data: T[] = [];
 
-  addItem(item: T){
+  addItem(item: T) {
     this.data.push(item);
   }
 
-  removeItem(item: T){
+  removeItem(item: T) {
     this.data.splice(this.data.indexOf(item), 1);
   }
 
-  getItems(){
+  getItems() {
     return this.data;
   }
 }
 
 const textStorage = new DataStorage<string>();
-textStorage.addItem("Jing Jie")
-textStorage.addItem("25")
-textStorage.addItem("Jasper")
-textStorage.removeItem("25")
+textStorage.addItem("Jing Jie");
+textStorage.addItem("25");
+textStorage.addItem("Jasper");
+textStorage.removeItem("25");
 console.log(textStorage.getItems());
 
-const numStorage = new DataStorage<number>()
-numStorage.addItem(20)
-numStorage.addItem(550)
-numStorage.addItem(40)
-numStorage.removeItem(20)
+const numStorage = new DataStorage<number>();
+numStorage.addItem(20);
+numStorage.addItem(550);
+numStorage.addItem(40);
+numStorage.removeItem(20);
 console.log(numStorage.getItems());
+
+// Generic utility types
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  description: string,
+  completeUntil: Date
+): CourseGoal {
+  // Using Partial built-in utility type to make all the fields in CourseGoal optional
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = completeUntil;
+  return courseGoal as CourseGoal;
+}
+
+// Using Readonly built-in utility type to ensure you cannot edit the array
+const people: Readonly<string[]> = ["Max", " Anna"];
+// people.push("Manu"); // error when trying to return

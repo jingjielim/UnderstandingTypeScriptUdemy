@@ -65,3 +65,14 @@ numStorage.addItem(550);
 numStorage.addItem(40);
 numStorage.removeItem(20);
 console.log(numStorage.getItems());
+function createCourseGoal(title, description, completeUntil) {
+    // Using Partial built-in utility type to make all the fields in CourseGoal optional
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = completeUntil;
+    return courseGoal;
+}
+// Using Readonly built-in utility type to ensure you cannot edit the array
+const people = ["Max", " Anna"];
+// people.push("Manu"); // error when trying to return
