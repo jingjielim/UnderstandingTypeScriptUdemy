@@ -56,7 +56,7 @@ console.log(extractAndConvert({ name: "James" }, "name"));
 
 
 // Generic Class
-class DataStorage<T>{
+class DataStorage<T extends number | string>{
   private data: T[] = [];
 
   addItem(item: T){
